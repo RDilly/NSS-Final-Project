@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AlbumArtizen.Models.AlbumPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4 class="text-white-50">All</h4>
+
+<p class="text-white-50">
+    <a class="text-white-50" asp-action="Create">Create New</a>
+</p>
+
+    <div class="card-deck">
+
+        @foreach (var item in Model){
+
+            <div class="col-sm-4">
+            <div class="card text-white bg-dark" style="width: 18rem; margin: 40px">
+
+                <div class="card-header">"@item.Title"   <br /> --by @item.User.DisplayName</div>
+                <img class="card-img-top" src="/images/@item.ImagePath" alt="Card image cap">
+                <div class="card-body">
+                    <a href="../../AlbumPosts/Edit/@item.AlbumPostId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AlbumPostId">Comment</a> 
+                </div>
+            </div>
+                </div>
+                }
+
+    </div>
